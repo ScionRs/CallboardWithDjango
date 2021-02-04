@@ -1,0 +1,30 @@
+{%  extends "layout/basic.html" %}
+
+{% block title %}{{ current_category.name }}{% endblock %}
+
+{% block content %}
+<h2>Рубрика: {{ current_category.name }}</h2>
+
+
+
+{% for ad in ads %}
+<div class="card">
+<div class="info">
+ <div>
+  {% if ad.photo %}
+<img src="{{ ad.photo.url }}" width="350px" height="350px"/>
+{% endif %}
+ </div>
+<div>
+<ul>
+<li><h2>{{ ad.title }}</h2></li>
+     <li><p>{{ ad.content }}</p></li>
+     <li><p>{{ ad.price }}</p></li>
+     <li><p>{{ ad.published|date:"d.m.Y H:i:s" }}</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+{% endfor %}
+{% endblock %}
